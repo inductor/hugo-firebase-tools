@@ -1,6 +1,6 @@
 FROM alpine:3.7 AS hugo-build
 WORKDIR /var
-ENV HUGO_VERSION 0.50.0
+ENV HUGO_VERSION 0.53
 # Install HUGO
 RUN set -x && \
   apk add --update wget ca-certificates && \
