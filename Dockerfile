@@ -1,4 +1,4 @@
-FROM alpine:3.7 AS hugo-build
+FROM alpine:3.8 AS hugo-build
 WORKDIR /var
 ENV HUGO_VERSION 0.53
 # Install HUGO
@@ -7,7 +7,7 @@ RUN set -x && \
   wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
   tar xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
 
-FROM node:alpine AS node
+FROM node:10.15.0-alpine AS node
 WORKDIR /usr/bin
 RUN apk --update add git openssh && \
   rm -rf /var/lib/apt/lists/* && \
