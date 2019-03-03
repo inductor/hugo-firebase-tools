@@ -7,7 +7,7 @@ RUN set -x && \
   wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
   tar xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
 
-FROM node:10.15.1-alpine AS node
+FROM node:10.15.2-alpine AS node
 WORKDIR /usr/bin
 COPY --from=hugo-build /var/hugo /usr/bin/hugo
 RUN apk --update add git openssh && \
