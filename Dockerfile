@@ -1,6 +1,6 @@
 FROM alpine:3.8 AS hugo-build
 WORKDIR /var
-ENV HUGO_VERSION 0.55.0
+ENV HUGO_VERSION 0.55.5
 # Install HUGO
 RUN set -x && \
   apk add --update wget ca-certificates && \
@@ -10,7 +10,5 @@ RUN set -x && \
 FROM node:10.15.3-alpine AS node
 WORKDIR /usr/bin
 COPY --from=hugo-build /var/hugo /usr/bin/hugo
-RUN apk --update add git openssh && \
-  npm install -g firebase-tools && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm /var/cache/apk/*
+RUN apk --update --no-cache add git openssh && \
+  npm install -g firebase-tools
