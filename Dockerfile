@@ -7,7 +7,7 @@ RUN set -x && \
   wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz && \
   tar xzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
 
-FROM node:12.14.1-alpine AS node
+FROM node:12.16.0-alpine AS node
 RUN apk --update --no-cache add git openssh && \
   npm install -g firebase-tools
 COPY --from=hugo-build /var/hugo /usr/bin/hugo
