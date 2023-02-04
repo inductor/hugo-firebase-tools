@@ -2,6 +2,9 @@ name: build container image
 
 on: push
 
+env:
+  IMAGE: ghcr.io/inductor/hugo-firebase-tools
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,10 +26,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ steps.login-ecr.outputs.registry }}/dreamkast-ecs
+          images: ${{ env.IMAGE }}
           tags: |
-            type=sha,prefix=,format=long
-            type=ref,event=branch
+            type=sha,prefix=sha-,suffix=,format=short
+            type=schedule,pattern={{date 'YYYYMMDD'}}
 
       - name: Build
         id: docker_build
