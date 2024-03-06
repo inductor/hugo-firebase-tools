@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1.7
 FROM alpine:3.18 AS hugo-build
 WORKDIR /var
 ENV HUGO_VERSION 0.110.0
